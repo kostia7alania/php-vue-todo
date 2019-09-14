@@ -1,0 +1,10 @@
+{
+    "name": "macbook/vue-php-todo",
+    "authors": [
+        {
+            "name": "kostia bazrow",
+            "email": "osetia-alania@mail.ru"
+        }
+    ],
+    "require": {}
+}
