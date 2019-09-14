@@ -46,7 +46,7 @@ class DataSource
     public function getConnection()
     {
                     //new \mysqli($host, $user, $password,$dbname);
-        $conn = mysqli_connect(self::HOST, self::USERNAME, self::PASSWORD, self::DATABASENAME);
+        $conn = new \mysqli(self::HOST, self::USERNAME, self::PASSWORD, self::DATABASENAME);
         
         if (!$conn) {
             echo "Ошибка: Невозможно установить соединение с MySQL." . PHP_EOL;
@@ -55,7 +55,7 @@ class DataSource
             exit;
         }
 
-        echo "Информация о сервере: " . mysqli_get_host_info($link) . PHP_EOL;
+        echo "Информация о сервере: " . mysqli_get_host_info($conn) . PHP_EOL;
         die;
         //$conn->set_charset("utf8");
         return $conn;
