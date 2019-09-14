@@ -3,5 +3,5 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/citypark/todo.kostia7alania.ru/
-    - /bin/cp -R $DEPLOYPATH
+    - export DEPLOYPATH=/home/citypark/forum.kostia7alania.ru/
+    - export REPOS=/home/citypark/repositories/php-vue-todo/
