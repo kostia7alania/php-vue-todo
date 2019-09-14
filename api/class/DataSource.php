@@ -48,11 +48,16 @@ class DataSource
                     //new \mysqli($host, $user, $password,$dbname);
         $conn = mysqli_connect(self::HOST, self::USERNAME, self::PASSWORD, self::DATABASENAME);
         
-        if (mysqli_connect_errno()) {
-            trigger_error("Problem with connecting to database.");
+        if (!$conn) {
+            echo "Ошибка: Невозможно установить соединение с MySQL." . PHP_EOL;
+            echo "Код ошибки errno: " . mysqli_connect_errno() . PHP_EOL;
+            echo "Текст ошибки error: " . mysqli_connect_error() . PHP_EOL;
+            exit;
         }
-        
-        $conn->set_charset("utf8");
+
+        echo "Информация о сервере: " . mysqli_get_host_info($link) . PHP_EOL;
+        die;
+        //$conn->set_charset("utf8");
         return $conn;
     }
 
