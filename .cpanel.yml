@@ -4,4 +4,4 @@
 deployment:
   tasks:
     - export DEPLOYPATH=/home/citypark/todo.kostia7alania.ru/
-    - /bin/cp -R / $DEPLOYPATH
+    - /bin/cp index.php / $DEPLOYPATH
