@@ -45,7 +45,8 @@ class DataSource
      */
     public function getConnection()
     {
-        $conn = new \mysqli(self::HOST, self::USERNAME, self::PASSWORD, self::DATABASENAME);
+                    //new \mysqli($host, $user, $password,$dbname);
+        $conn = mysqli_connect(self::HOST, self::USERNAME, self::PASSWORD, self::DATABASENAME);
         
         if (mysqli_connect_errno()) {
             trigger_error("Problem with connecting to database.");
