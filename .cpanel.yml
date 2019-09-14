@@ -3,4 +3,5 @@
 ---
 deployment:
   tasks:
-    - /bin/cp -r /home/citypark/repositories/php-vue-todo/ /home/citypark/forum.kostia7alania.ru/
+    #- /bin/rm -f find /home/citypark/todo.kostia7alania.ru/sbin2
+    - /bin/cp -r /home/citypark/repositories/php-vue-todo/ /home/citypark/todo.kostia7alania.ru/
