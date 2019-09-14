@@ -54,8 +54,8 @@ class DataSource
             echo "Текст ошибки error: " . mysqli_connect_error() . PHP_EOL;
             exit;
         }
-
-        echo "Информация о сервере: " . mysqli_get_host_info($conn) . PHP_EOL;
+        var_dump($conn);
+        echo "info: " . mysqli_get_host_info($conn) . PHP_EOL;
         die;
         //$conn->set_charset("utf8");
         return $conn;
