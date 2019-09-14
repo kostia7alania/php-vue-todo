@@ -69,7 +69,8 @@ class DataSource
         if(!empty($paramType) && !empty($paramArray)) {
             $this->bindQueryParams($stmt, $paramType, $paramArray);
         }
-        
+        var_dump($stmt);
+        die;
         $stmt->execute();
         $result = $stmt->get_result();
         
