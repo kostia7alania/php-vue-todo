@@ -1,4 +1,8 @@
-<?
+<?php
 session_start();
-//$_SESSION[123]=123;
-var_dump($_SESSION);
+if(!empty($_SESSION["userId"])) {
+    require_once './view/dashboard.php';
+} else {
+    require_once './view/login-form.php';
+}
+?>
