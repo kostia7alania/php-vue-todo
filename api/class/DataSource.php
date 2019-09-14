@@ -14,11 +14,11 @@ class DataSource
     // when using above 7.1.0, declare the below constants as private
     const HOST = 'localhost';
 
-    const USERNAME = 'citypart_test';
+    const USERNAME = 'citypark_test';
 
     const PASSWORD = 'Fire7fox22!';
 
-    const DATABASENAME = 'citypart_todo';
+    const DATABASENAME = 'citypark_todo';
 
     private $conn;
 
