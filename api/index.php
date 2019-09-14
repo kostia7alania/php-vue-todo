@@ -10,6 +10,8 @@ if ( ! empty( $_POST ) ) {
         $password = "Fire7fox22!"; 
         $dbname = "citypark_todo"; 
         $con = new mysqli($host, $user, $password, $dbname);
+        var_dump($con);
+        die;
         $stmt = $con->prepare("SELECT * FROM users WHERE login = ?");
         $stmt->bind_param('s', $_POST['username']);
         $stmt->execute();
