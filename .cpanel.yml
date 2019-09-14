@@ -3,4 +3,4 @@
 ---
 deployment:
   tasks:
-    - /bin/cp /home/citypark/repositories/php-vue-todo/ /home/citypark/forum.kostia7alania.ru/
+    - /bin/cp -r /home/citypark/repositories/php-vue-todo/ /home/citypark/forum.kostia7alania.ru/
