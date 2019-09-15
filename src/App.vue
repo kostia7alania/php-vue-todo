@@ -1,13 +1,13 @@
 <template>
   <v-app light app>
-    <v-toolbar  >
+    <v-toolbar>
       <v-toolbar-title class="headline text-uppercase">
         <span>Test</span>
         <span class="font-weight-light">TODO</span>
       </v-toolbar-title>
       <v-spacer></v-spacer>
       <v-btn
-        flat
+        text
         href="https://github.com/kostia7alania/php-vue-todo"
         target="_blank"
       >
@@ -28,7 +28,6 @@
 
 <script>  
 import { mapState } from 'vuex';
-
 export default {
   name: 'App',
   props:['props'],

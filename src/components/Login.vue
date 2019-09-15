@@ -45,7 +45,7 @@
         <v-divider></v-divider>
 
         <v-card-actions>
-          <v-btn color="red" flat @click="login"
+          <v-btn color="red" text @click="login"
               :loading="loading"
               :disabled="isLoginDisabled"
           >
@@ -57,7 +57,7 @@
 
           <v-btn
             color="primary"
-            flat
+            text
             @click="isShow=false"
           >
             Cancel

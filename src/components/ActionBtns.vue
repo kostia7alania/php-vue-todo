@@ -57,8 +57,8 @@ import { mapState } from 'vuex'
     },
     methods: {
       actionClick(e) {
-        if(e == 'edit' ) this.$emit('edit')
-        else if(e == 'delete') this.$emit('delete')
+        if(e == 'edit' ) this.$emit('edit', this.item)
+        else if(e == 'delete') this.$emit('delete', this.item)
         // else this.$emit(e) // just for example
       }
     }

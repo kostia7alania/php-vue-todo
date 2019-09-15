@@ -8,9 +8,9 @@ const getExios = async() => "axios" in window || (await
     ));
 getExios()
 const errHandler = err => {
-    debugger
     const msg = err.response && err.response.status === 401 ? err.response.data || 'Необходимо быть администратором для этого действия' : err.message
     store.commit('SET_SNACK_MSG', msg)
+    return false
 }
 import createPersistedState from 'vuex-persistedstate'
 export default window.store = new Vuex.Store({
@@ -18,7 +18,7 @@ export default window.store = new Vuex.Store({
     state: {
         ITEMS: [],
         SEARCH_BY: '',
-        loading: false,
+        IS_LOADING: false,
         snackMsg: false,
         // BACKEND_URL: 'http://localhost:3000/mvc/',
         BACKEND_URL: 'https://todo.kostia7alania.ru/',
@@ -56,8 +56,8 @@ export default window.store = new Vuex.Store({
         }
     },
     mutations: {
-        SET_LOADING_ON(state) { state.loading = true },
-        SET_LOADING_OFF(state) { state.loading = false },
+        SET_IS_LOADING_ON(state) { state.IS_LOADING = true },
+        SET_IS_LOADING_OFF(state) { state.IS_LOADING = false },
         SET_SHOW_LOGIN_DIALOG(state, val) { state.SHOW_LOGIN_DIALOG = val },
         SET_IS_LOGGED_IN(state, LOGGED_IN) { state.IS_LOGGED_IN = LOGGED_IN },
         SET_IS_ADMIN(state, IS_ADMIN) { state.IS_ADMIN = !!IS_ADMIN },
@@ -81,28 +81,28 @@ export default window.store = new Vuex.Store({
         async CREATE_ITEM({ state, commit, dispatch }, item) {
             const fd = new FormData();
             Object.keys(item).forEach(key => fd.append(key, item[key]))
-            commit('SET_LOADING_ON')
+            commit('SET_IS_LOADING_ON')
             return axios
                 .post(state.BACKEND_URL + 'tasks/create', fd)
                 .then(res => dispatch('GET_ITEMS'))
                 .catch(errHandler)
-                .finally(() => commit('SET_LOADING_OFF'))
+                .finally(e => {commit('SET_IS_LOADING_OFF'); return e})
         },
         async UPDATE_ITEM({ state, commit }, item) {
             const fd = new FormData();
             Object.keys(item).forEach(key => fd.append(key, item[key]))
-            commit('SET_LOADING_ON')
+            commit('SET_IS_LOADING_ON')
             return axios
                 .post(state.BACKEND_URL + 'tasks/update/' + item.id, fd)
                 .then(res => dispatch('GET_ITEMS'))
                 .catch(errHandler)
-                .finally(() => commit('SET_LOADING_OFF'))
+                .finally(e => {commit('SET_IS_LOADING_OFF'); return e})
         },
 
         async DELETE_ITEM({ state, commit, dispatch }, id) {
             const fd = new FormData();
             fd.append('id', id)
-            commit('SET_LOADING_ON')
+            commit('SET_IS_LOADING_ON')
             return axios
                 .post(state.BACKEND_URL + 'tasks/delete/' + id, fd)
                 .then(res => {
@@ -110,12 +110,12 @@ export default window.store = new Vuex.Store({
                     dispatch('GET_ITEMS')
                 })
                 .catch(errHandler)
-                .finally(() => commit('SET_LOADING_OFF'))
+                .finally(e => {commit('SET_IS_LOADING_OFF'); return e})
         },
 
 
         GET_ITEMS({ state, commit }) {
-            commit('SET_LOADING_ON')
+            commit('SET_IS_LOADING_ON')
             return axios
                 .post(state.BACKEND_URL + 'tasks')
                 .then(res => {
@@ -123,7 +123,7 @@ export default window.store = new Vuex.Store({
                     commit('SET_SNACK_MSG', 'Updated')
                 })
                 .catch(errHandler)
-                .finally(() => commit('SET_LOADING_OFF'))
+                .finally(e => {commit('SET_IS_LOADING_OFF'); return e})
         },
 
         DO_LOGIN({ state, commit }, form) {

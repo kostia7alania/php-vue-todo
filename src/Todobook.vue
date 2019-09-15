@@ -1,8 +1,11 @@
 <template>
-  <v-layout row>
-    <v-flex xs12 sm6 offset-sm3>
-      <v-card> 
+  <v-layout row >
+    <v-flex xs10 offset-xs1 xs12 sm6 offset-sm3>
+
+      <v-card max-width="750"> 
+      
       <toolbar/>
+
       <v-card-title class="headline font-weight-regular blue-grey white--text">
             <v-badge color="">
               <template v-slot:badge>
@@ -18,29 +21,37 @@
           <v-icon>add</v-icon>
         </v-btn>
       </v-card-title>
-         
-          <v-list two-line>
-            <template v-for="(item,i) in FILTERED_ITEMS">
 
-              <v-subheader
-                v-if="showSubheader(i,item)"
-                :key="item.id+2">
-                {{ item.name&&item.name[0] | subheaderFilter}}
-              </v-subheader>
-              <contact
-                :item="item"
-                :key="item.id"
-              />
-            </template>
+        <TodoTable/>
+         <v-divider :inset="true"  />
+        <div class="text-center">
+          <v-btn center @click="isShownRows=!isShownRows">{{isShownRows?'Скрыть':'Показать'}} строки</v-btn>
+        </div>
+        
+        <v-list three-line v-if="isShownRows">
+          <template v-for="(item,i) in FILTERED_ITEMS">
 
-            <v-alert
-                v-if="!FILTERED_ITEMS.length"
-                :value="true"
-                type="warning"
-                outline
-              >Нет задач
-              </v-alert>
-          </v-list> 
+            <v-subheader
+              v-if="showSubheader(i,item)"
+              :key="item.id+2">
+              {{ item.name&&item.name[0] | subheaderFilter}}
+            </v-subheader>
+
+            <TaskRow
+              :item="item"
+              :key="item.id"
+            />
+          </template>
+
+          <v-alert
+              v-if="!FILTERED_ITEMS.length"
+              :value="true"
+              type="warning"
+              outlined
+            >Нет задач
+            </v-alert>
+        </v-list> 
+
       </v-card>
 
       <TaskInfo
@@ -53,7 +64,8 @@
         @cancel="closeModal"
         @save="saveClick"
       />
-                  
+
+    
     </v-flex>
      
     
@@ -61,16 +73,20 @@
 </template>
 
 <script>
-import toolbar from './components/Toolbar.vue'
-import contact from './components/Contact.vue'
 import { mapState, mapMutations, mapActions, mapGetters } from 'vuex' 
   
   export default {
     name: 'todo-book',
-    components: {toolbar, contact, TaskInfo: ()=> import('./components/Task-info.vue')},
+    components: {
+      toolbar: ()=> import('./components/Toolbar.vue'),
+      TaskInfo: ()=> import('./components/Task-info.vue'),
+      TodoTable: ()=> import('./components/Todo-table.vue'),
+      TaskRow: ()=> import('./components/Task-row.vue')
+    },
     data() {
       return {
         showDialog: false,
+        isShownRows: false,
       }
     },
     computed: {

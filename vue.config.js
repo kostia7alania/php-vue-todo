@@ -1,5 +1,6 @@
 const isDev = process.env.NODE_ENV == "development"
-
+//const VuetifyLoaderPlugin = require('vuetify-loader/lib/plugin')
+ 
 module.exports = {
     transpileDependencies: [],
     publicPath: isDev ? './' : '././dist',
@@ -19,6 +20,9 @@ module.exports = {
           pathRewrite: { '^/api': '' }
         }
       }
-    }
+    },
+    configureWebpack: {
+    //  plugins: [ new VuetifyLoaderPlugin()  ],
+    },
   }
   

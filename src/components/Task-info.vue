@@ -3,7 +3,7 @@
       v-model="isShowing"
       width="500"
     > 
-      <v-layout row>
+      <v-layout wrap>
         <v-flex xs12 >
           <v-card>
             <v-img
@@ -15,8 +15,8 @@
             <v-card-title primary-title>
               <div>
                 <div class="headline">{{headline}}</div>
-                <span class="grey--text" v-if="itemCreatedDate">Created: {{itemCreatedDate}}</span>
-               <span class="grey--text" v-if="itemUpdatedDate"><br>Updated: {{itemUpdatedDate}}</span>
+                <span class="grey--text subtitle-2" v-if="itemCreatedDate">Created: {{itemCreatedDate}}</span>
+               <span class="grey--text subtitle-2" v-if="itemUpdatedDate"><br>Updated: {{itemUpdatedDate}}</span>
               </div>
             </v-card-title>
  
@@ -61,15 +61,15 @@
     
             <v-card-actions>
 
-              <v-btn v-if="!isEditing" flat @click="$emit('edit')" :disabled="!IS_ADMIN">Edit</v-btn>
-              <v-btn v-if="!isEditing" flat @click="$emit('delete')" :disabled="!IS_ADMIN" color="purple">Delete</v-btn>
+              <v-btn v-if="!isEditing" text @click="$emit('edit', itemBuffer)" :disabled="!IS_ADMIN">Edit</v-btn>
+              <v-btn v-if="!isEditing" text @click="$emit('delete', itemBuffer)" :disabled="!IS_ADMIN" color="purple">Delete</v-btn>
             
-              <v-btn v-if="isEditing" flat @click="saveClick" :disabled="!IS_ADMIN && !isSaveBtnActive">Save</v-btn>
-              <v-btn v-if="isEditing" flat @click="cancelClick">Cancel</v-btn>
+              <v-btn v-if="isEditing" text @click="saveClick" :disabled="!IS_ADMIN && !isSaveBtnActive">Save</v-btn>
+              <v-btn v-if="isEditing" text @click="cancelClick">Cancel</v-btn>
               
               <v-spacer></v-spacer>
 
-              <v-btn color="primary" flat @click="$emit('close')"> Close
+              <v-btn color="primary" text @click="$emit('close')"> Close
               </v-btn>
 
               
