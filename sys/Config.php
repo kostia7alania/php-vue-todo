@@ -10,7 +10,7 @@ final class Config {
 	 * @var string
 	 */
 	//const BASE = 'http://localhost:3000/mvc/';
-	const BASE = 'https://todo.kostia7alania.ru/'; 
+	const BASE = '//todo.kostia7alania.ru/'; 
 
 	/**
 	 * Релативни линк апликације (на продукцији најчешће само '/')

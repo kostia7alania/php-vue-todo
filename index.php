@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
 	die();
 }
 require_once './sys/autoload.php';
-error_reporting(0);
+//error_reporting(0);
 Session::begin();
 
 $request = Http::getRequestedPath();
