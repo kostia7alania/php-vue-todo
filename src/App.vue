@@ -21,12 +21,13 @@
       <section> <Todobook/> </section>
       <Footer-app/>
       <Snack/>
-      <Login/>
+      <Login v-if="SHOW_LOGIN_DIALOG"/>
     </v-content>
   </v-app>
 </template>
 
 <script>  
+import { mapState } from 'vuex';
 
 export default {
   name: 'App',
@@ -37,13 +38,15 @@ export default {
     Snack:()=>import('./components/Snack'),
     Login:()=>import('./components/Login'),
   },
+  data () {
+    return {}
+  },
   mounted(){
-    debugger
     const p = this.props
     Object.keys(p).forEach(key=>this.$store.commit('SET_INIT_PARAMS', {key, val: p[key]}))
   },
-  data () {
-    return {}
+  computed: {
+    ...mapState(['SHOW_LOGIN_DIALOG']),
   }
 }
 </script> 

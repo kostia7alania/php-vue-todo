@@ -9,6 +9,7 @@
       <template v-slot:activator="{ on }">
       
         <v-btn
+          :disabled="!IS_ADMIN"
           v-on="on"
           dark 
           :color="action.color"
@@ -27,6 +28,7 @@
   </v-card-actions>
 </template>
 <script> 
+import { mapState } from 'vuex'
   export default { 
     props: ['item'],
     data() {
@@ -47,6 +49,11 @@
           ]
 
       }
+    },
+    computed: {
+      ...mapState([
+        'IS_ADMIN'
+      ])
     },
     methods: {
       actionClick(e) {

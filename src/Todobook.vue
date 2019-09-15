@@ -71,7 +71,6 @@ import { mapState, mapMutations, mapActions, mapGetters } from 'vuex'
     data() {
       return {
         showDialog: false,
-        isImportShow:null,
       }
     },
     computed: {
@@ -80,6 +79,9 @@ import { mapState, mapMutations, mapActions, mapGetters } from 'vuex'
       count(){
         return this.ITEMS.length
       },
+    },
+    mounted(){
+      this.getItems()
     },
     methods: {
       ...mapActions([
@@ -105,12 +107,6 @@ import { mapState, mapMutations, mapActions, mapGetters } from 'vuex'
       closeModal() {
         this.showDialog=false
       }, 
-      showImport(){
-        this.isImportShow = true
-      },
-      hideImport(){
-        this.isImportShow = false
-      }
     },
     filters: {
       subheaderFilter(e) {

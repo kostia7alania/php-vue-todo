@@ -70,7 +70,8 @@ class HomeController extends Controller {
 	 * @return void
 	 */
 	public function logout() {
-		Session::end(); 
+		Session::end();
+		exit(http_response_code(201));
 		Redirect::to('');
 	}
 

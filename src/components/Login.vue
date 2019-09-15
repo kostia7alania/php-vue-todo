@@ -30,6 +30,7 @@
             :validate="false"
           />
           <v-text-field
+            type="password"
             :disabled="loading"
             @keyup.enter="login"
             v-model.trim="form.password"

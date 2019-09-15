@@ -21,6 +21,7 @@
         <v-list-tile-content>
           <v-list-tile-title v-html="item.name"></v-list-tile-title>
           <v-list-tile-sub-title v-html="item.phone"></v-list-tile-sub-title>
+          <v-list-tile-sub-title v-html="item.description"></v-list-tile-sub-title>
         </v-list-tile-content>
       </v-list-tile> 
 

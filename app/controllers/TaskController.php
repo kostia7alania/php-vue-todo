@@ -66,8 +66,10 @@ class TaskController extends AuthController {
 	 * @return void
 	 */
 	public function update($id) {
-		if(!Session::get(Config::USER_COOKIE)) 
-			exit(http_response_code(401));
+		if(!Session::get(Config::USER_COOKIE)) {
+			http_response_code(401);
+			exit('Unauthorized');
+		}
 
 		$this->set('title', 'Update task');
 
@@ -112,9 +114,7 @@ class TaskController extends AuthController {
 	 * @return void
 	 */
 	public function delete($id) {
-		var_dump(Session::get(Config::USER_COOKIE));
-		die;
-		if(!Session::get(Config::USER_COOKIE))  {
+		if(!Session::get(Config::USER_COOKIE))  { 
 			http_response_code(401);
 			exit('Unauthorized');
 		}

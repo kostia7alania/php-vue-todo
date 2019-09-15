@@ -51,7 +51,7 @@
                 required
                 :validate="false"
              />
-              <v-checkbox
+              <v-checkbox :disabled=" !isEditing || !IS_ADMIN "
                 v-model="itemBuffer.is_completed"
                 :label="`${itemBuffer.is_completed && itemBuffer.is_completed.toString() && 'Завершено' || 'Не завершено'}`"
               ></v-checkbox>
@@ -61,10 +61,10 @@
     
             <v-card-actions>
 
-              <v-btn v-if="!isEditing" flat @click="$emit('edit')">Edit</v-btn>
-              <v-btn v-if="!isEditing" flat @click="$emit('delete')" color="purple">Delete</v-btn>
+              <v-btn v-if="!isEditing" flat @click="$emit('edit')" :disabled="!IS_ADMIN">Edit</v-btn>
+              <v-btn v-if="!isEditing" flat @click="$emit('delete')" :disabled="!IS_ADMIN" color="purple">Delete</v-btn>
             
-              <v-btn :disabled="!isSaveBtnActive" v-if="isEditing" flat @click="saveClick">Save</v-btn>
+              <v-btn v-if="isEditing" flat @click="saveClick" :disabled="!IS_ADMIN && !isSaveBtnActive">Save</v-btn>
               <v-btn v-if="isEditing" flat @click="cancelClick">Cancel</v-btn>
               
               <v-spacer></v-spacer>
@@ -83,6 +83,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
   export default {
     props: ['show', 'item', 'isEditing', 'isCreating'],
     data () {
@@ -102,6 +103,7 @@
       this.refreshItems();
     },
     computed: {
+      ...mapState(['IS_ADMIN']),
       headline() {
         return this.isCreating && 'New task' ||
               this.isEditing && 'Edit task '

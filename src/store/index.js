@@ -7,9 +7,13 @@ const getExios = async() => "axios" in window || (await
         m => (window.axios = m.default)
     ));
 getExios()
-
+const errHandler = err => {
+    debugger
+    const msg = err.response && err.response.status === 401 ? err.response.data || 'Необходимо быть администратором для этого действия' : err.message
+    store.commit('SET_SNACK_MSG', msg)
+}
 import createPersistedState from 'vuex-persistedstate'
-export default new Vuex.Store({
+export default window.store = new Vuex.Store({
     //plugins: [createPersistedState()],
     state: {
         ITEMS: [],
@@ -56,7 +60,7 @@ export default new Vuex.Store({
         SET_LOADING_OFF(state) { state.loading = false },
         SET_SHOW_LOGIN_DIALOG(state, val) { state.SHOW_LOGIN_DIALOG = val },
         SET_IS_LOGGED_IN(state, LOGGED_IN) { state.IS_LOGGED_IN = LOGGED_IN },
-        SET_IS_ADMIN(state, IS_ADMIN) { state.IS_ADMIN = IS_ADMIN },
+        SET_IS_ADMIN(state, IS_ADMIN) { state.IS_ADMIN = !!IS_ADMIN },
         SET_INIT_PARAMS(state, { key, val }) { state[key] = val },
         SET_SEARCH_BY(state, req) {
             state.SEARCH_BY = req
@@ -81,7 +85,7 @@ export default new Vuex.Store({
             return axios
                 .post(state.BACKEND_URL + 'tasks/create', fd)
                 .then(res => dispatch('GET_ITEMS'))
-                .catch(err => commit('SET_SNACK_MSG', err.message))
+                .catch(errHandler)
                 .finally(() => commit('SET_LOADING_OFF'))
         },
         async UPDATE_ITEM({ state, commit }, item) {
@@ -91,11 +95,11 @@ export default new Vuex.Store({
             return axios
                 .post(state.BACKEND_URL + 'tasks/update/' + item.id, fd)
                 .then(res => dispatch('GET_ITEMS'))
-                .catch(err => commit('SET_SNACK_MSG', err.message))
+                .catch(errHandler)
                 .finally(() => commit('SET_LOADING_OFF'))
         },
 
-        async DELETE_ITEM({ state, commit }, id) {
+        async DELETE_ITEM({ state, commit, dispatch }, id) {
             const fd = new FormData();
             fd.append('id', id)
             commit('SET_LOADING_ON')
@@ -105,7 +109,7 @@ export default new Vuex.Store({
                     commit('SET_SNACK_MSG', 'Contact has been deleted')
                     dispatch('GET_ITEMS')
                 })
-                .catch(err => commit('SET_SNACK_MSG', err.message))
+                .catch(errHandler)
                 .finally(() => commit('SET_LOADING_OFF'))
         },
 
@@ -118,7 +122,7 @@ export default new Vuex.Store({
                     commit('SET_ITEMS', res.data)
                     commit('SET_SNACK_MSG', 'Updated')
                 })
-                .catch(err => commit('SET_SNACK_MSG', err.message))
+                .catch(errHandler)
                 .finally(() => commit('SET_LOADING_OFF'))
         },
 
@@ -134,7 +138,17 @@ export default new Vuex.Store({
                     commit('SET_IS_ADMIN', res.data.is_admin)
                     return true
                 })
-                .catch(err => commit('SET_SNACK_MSG', err.message))
+                .catch(errHandler)
+        },
+
+        LOGOUT({ state, commit }) {
+            axios.get(state.BACKEND_URL + 'logout')
+                .then(res => {
+                    commit('SET_SNACK_MSG', 'Logged out!')
+                    commit('SET_IS_LOGGED_IN', false)
+                    commit('SET_IS_ADMIN', false)
+                })
+                .catch(errHandler)
         }
     },
 })
