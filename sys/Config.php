@@ -21,8 +21,8 @@ final class Config {
 	 * Сервер БП: име хоста
 	 * @var string
 	 */
-	//const DB_HOST = '185.211.244.128';
-	const DB_HOST = 'localhost';
+	const DB_HOST = '185.211.244.128';
+	//const DB_HOST = 'localhost';
 
  	/**
 	 * Сервер БП: корисничко име
