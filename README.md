@@ -1,3 +1,34 @@
+# vue-php-todo
+
+## Project setup
+```
+yarn install
+```
+
+### Compiles and hot-reloads for development
+```
+yarn run serve
+```
+
+### Compiles and minifies for production
+```
+yarn run build
+```
+
+### Run your tests
+```
+yarn run test
+```
+
+### Lints and fixes files
+```
+yarn run lint
+```
+
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).
+
+
 Как договаривались, отправляю Вам тестовое задание. Пожалуйста, подтвердите, что Вы получили это письмо.
 Необходимо создать приложение-задачник.
 Задачи состоят из:
@@ -31,3 +62,4 @@
 9) Открыть параллельно приложение в новой вкладке. Разлогиниться в новой вкладке. В этой вкладке не должно быть возможности редактировать задачу. Вернуться в предыдущую вкладку. Отредактировать задачу и сохранить. Отредактированная задача не должна быть сохранена. Приложение должно запросить авторизацию.
 
 Успешного выполнения!
+
