@@ -1,4 +1,10 @@
-RewriteEngine on
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule . index.php [L]
+<IfModule !rewrite_module>
+	Error "rewrite_module is required."
+</IfModule>
+
+Options -Indexes
+
+RewriteEngine On
+RewriteRule ^assets/ - [END]
+RewriteRule ^robots.txt$ - [END]
+RewriteRule ^(?:.*)$ index.php [END]
