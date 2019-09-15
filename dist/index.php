@@ -12,7 +12,7 @@
 
 <div style="border='1px solid red;'">
    <?
-    var_dump(Session::get(Config::USER_COOKIE));
+    print_r(Session::get(Config::USER_COOKIE));
    ?>
 </div>
 
