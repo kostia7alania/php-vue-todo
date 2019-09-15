@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "./dist/precache-manifest.1c73abacd0008c2ddf76f8dc33b63d5d.js"
+  "./dist/precache-manifest.57b5ce17b27bda56839d0f8855011436.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "phonebook-vue"});

@@ -19,7 +19,7 @@
     <v-data-table
       dense
       :headers="headers"
-      :items="desserts"
+      :items="ITEMS"
       :items-per-page="5"
       :search="search"
       :loading="IS_LOADING"
@@ -82,11 +82,10 @@ import { mapState, mapActions } from 'vuex'
         isEditing: false,
         isShownTaskInfo: false,
         search: '', 
-        desserts:[{"id":"17","name":"UPDATE_ITEM","description":"UPDATE_ITEM","created_at":"2019-09-15 12:08:53","updated_at":null,"email":"UPDATE_ITEM","is_completed":null},{"id":"30","name":"w","description":"wwq","created_at":"2019-09-15 19:09:51","updated_at":null,"email":"wq","is_completed":"1"},{"id":"34","name":"Andrey","description":"Hey, you need to do this shit.","created_at":"2019-09-15 19:49:32","updated_at":null,"email":"andy@yahoo.com","is_completed":"1"},{"id":"35","name":"\u0443\u0444\u044b\u0444","description":"\u0444\u044b\u0432","created_at":"2019-09-15 20:00:08","updated_at":null,"email":"\u044b\u0444\u044b\u0444\u0432","is_completed":"1"},{"id":"36","name":"Name","description":"ZsZ","created_at":"2019-09-15 20:01:13","updated_at":null,"email":"validacii nety chtoli  ```\/\/\/,,,,\/\/\/\\\\\\\\","is_completed":"1"},{"id":"37","name":"Robert Burns","description":"This shit&#39;s driving me crazy! I gotta finish this somehow!","created_at":"2019-09-15 20:01:39","updated_at":null,"email":"robert","is_completed":"1"},{"id":"38","name":"PennyWise","description":"Gotta do the laundry and then go to the movies!","created_at":"2019-09-15 20:02:35","updated_at":null,"email":"as","is_completed":"1"}]
       }
     },
     computed: {
-      ...mapState(['IS_LOADING','IS_ADMIN']),
+      ...mapState(['IS_LOADING','IS_ADMIN','ITEMS']),
        headers() {
          const headers = [
           { text: 'Имя', value: 'name', align: 'left',  },
