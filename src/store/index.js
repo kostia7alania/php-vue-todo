@@ -88,7 +88,7 @@ export default window.store = new Vuex.Store({
                 .catch(errHandler)
                 .finally(e => {commit('SET_IS_LOADING_OFF'); return e})
         },
-        async UPDATE_ITEM({ state, commit }, item) {
+        async UPDATE_ITEM({ state, commit, dispatch }, item) {
             const fd = new FormData();
             Object.keys(item).forEach(key => fd.append(key, item[key]))
             commit('SET_IS_LOADING_ON')

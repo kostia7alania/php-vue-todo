@@ -1,7 +1,7 @@
 self.__precacheManifest = [
   {
-    "revision": "2cca24e81d9d54975f1b",
-    "url": "./dist/js/app.2e2c9007.js"
+    "revision": "b4224e1aae85e8682192",
+    "url": "./dist/js/app.81fcae5e.js"
   },
   {
     "revision": "6ba69ca0286bf24d22cf",
@@ -116,7 +116,7 @@ self.__precacheManifest = [
     "url": "./dist/js/http.87d58dce.js"
   },
   {
-    "revision": "a2066a5b436e744baaf16dc59be42ef7",
+    "revision": "e57aa9e135369d81c654cbac2cca9b3c",
     "url": "./dist/index.html"
   },
   {
