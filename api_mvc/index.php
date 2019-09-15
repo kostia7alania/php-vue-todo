@@ -1,5 +1,5 @@
 <?php
-echo 123;
+echo 1232;
 die;
 header('Access-Control-Allow-Origin: *');
 if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
