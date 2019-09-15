@@ -12,6 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
 }
 require_once './sys/autoload.php';
 error_reporting(0);
+php_info();
 var_dump(Session);die;
 Session::begin();
 echo 12;die;
