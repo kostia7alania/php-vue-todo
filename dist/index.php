@@ -2,6 +2,11 @@
             var props = {
                 BACKEND_URL: 'http://todo.kostia7alania.ru/',
                 IS_ADMIN: ''
+                IS_LOGGED_IN: ''
             }
             initApp(props)
+            <?
+            echo intval(Session::get(Config::USER_COOKIE));
+            die;
+            ?>
         }</script><script src=./dist/js/chunk-vendors.87b88f2e.js></script><script src=./dist/js/app.a789b8d5.js></script></body></html>
