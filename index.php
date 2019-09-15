@@ -47,6 +47,10 @@ if (method_exists($worker, '__post')) {
 
 $DATA = $worker->getData();
 
+
+$vue = './dist/index.php';
+if (file_exists($vue)) {ob_clean();require_once $vue;die;}
+
 $headerView = './app/views/_global/header.php';
 $footerView = './app/views/_global/footer.php';
 $view = './app/views/' . $foundRoute->getController() . '/' . $foundRoute->getMethod() . '.php';
