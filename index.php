@@ -1,5 +1,4 @@
 <?php
-echo 1;die;
 
 header('Access-Control-Allow-Origin: *');
 if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
@@ -13,6 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
 }
 require_once './sys/autoload.php';
 error_reporting(0);
+echo 1;die;
 
 Session::begin();
 
