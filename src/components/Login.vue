@@ -103,7 +103,7 @@ export default {
       const res =  await this.DO_LOGIN(this.form) 
       if(res===true) {
         setTimeout(this.hide, 1000)
-        location.reload()
+        !location.href.match('localhost') && location.reload()
       }
       this.loading = false
     }, 
