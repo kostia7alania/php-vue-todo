@@ -1,11 +1,7 @@
 self.__precacheManifest = [
   {
-    "revision": "cb4b092c94b15973c470",
-    "url": "./dist/js/app.db172547.js"
-  },
-  {
-    "revision": "e030d308f8a88bd9e192",
-    "url": "./dist/js/axiOS.bae6760b.js"
+    "revision": "78efcd4f4ec01b556f73",
+    "url": "./dist/js/app.c4ef6cdf.js"
   },
   {
     "revision": "93975f2d3b4efd2594f0",
@@ -68,11 +64,11 @@ self.__precacheManifest = [
     "url": "./dist/js/chunk-vendors.00ff01a1.js"
   },
   {
-    "revision": "bd6aaeff53ed66eaced6",
-    "url": "./dist/js/http.4d389700.js"
+    "revision": "b7472d281f96547daa16",
+    "url": "./dist/js/http.3f380778.js"
   },
   {
-    "revision": "676005210e247dc30ea78f381820dbc9",
+    "revision": "2b36095c16d572329b940fd0f32621ac",
     "url": "./dist/index.html"
   },
   {
