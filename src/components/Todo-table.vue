@@ -101,7 +101,7 @@ import { mapState, mapActions } from 'vuex'
     methods: {
       ...mapActions(['UPDATE_ITEM', 'DELETE_ITEM']),
       async changeHandler(val, item) {
-        item.is_completed = val;
+        item.is_completed = !item.is_completed;
         console.log('val', val)
         const res = await this.UPDATE_ITEM(item)
         if(res===false) item.is_completed = !item.is_completed
