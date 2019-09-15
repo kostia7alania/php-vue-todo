@@ -2,7 +2,7 @@
 require_once('middlewars/cors.php');
 
 //http_response_code(300);exit('stop');
-/*
+/* 
  $host = "185.211.244.128"; 
  $user = "citypark_test"; 
  $password = "Fire7fox22!"; 
