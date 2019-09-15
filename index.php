@@ -66,10 +66,8 @@ if (!file_exists($footerView)) {
 	die('VIEW: Footer file not found.');
 }
 
-$jsModule = sprintf('assets/js/modules/%s_%s.js', $foundRoute->getController(), $foundRoute->getMethod());
-if (file_exists($jsModule)) {
-	$DATA['JAVASCRIPT_MODULE'] = $jsModule;
-}
+//$jsModule = sprintf('assets/js/modules/%s_%s.js', $foundRoute->getController(), $foundRoute->getMethod());
+//if (file_exists($jsModule)) { $DATA['JAVASCRIPT_MODULE'] = $jsModule;}
 
 require_once $headerView;
 require_once $view;
