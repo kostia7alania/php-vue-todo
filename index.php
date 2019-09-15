@@ -54,8 +54,8 @@ if (file_exists($vue)) {
 	require_once $vue;
 	?>
 		<script>
-			IS_ADMIN=<?=Session::get(Config::USER_COOKIE)?1:0?>
-			IS_LOGGED_IN=<?=Session::get(Config::USER_COOKIE)?1:0?>
+			;IS_ADMIN=<?=Session::get(Config::USER_COOKIE)?1:0?>;
+			IS_LOGGED_IN=<?=Session::get(Config::USER_COOKIE)?1:0?>;
 		</script>
 	<?
 	die;
