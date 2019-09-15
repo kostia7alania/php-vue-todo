@@ -1,0 +1,1 @@
+AddHandler application/x-httpd-php-7.1 .php
