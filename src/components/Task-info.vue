@@ -94,6 +94,10 @@ import { mapState } from 'vuex';
         ],
         emailRules: [
           v => !!v || 'Email is required',
+          v => {
+            const pattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            return pattern.test(v) || "Must be a valid e-mail.";
+          }
         ],
         descriptionRules: [v=>!!v||'Description is required']
         
