@@ -13,7 +13,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
 require_once './sys/autoload.php';
 error_reporting(0);
 Session::begin();
-echo 12;die;
 
 $request = Http::getRequestedPath();
 $routes = require_once './routes.php';
