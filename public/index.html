@@ -27,7 +27,8 @@
         window.onload = function() {
             var props = {
                 BACKEND_URL: 'http://todo.kostia7alania.ru/',
-                IS_ADMIN: ''
+                IS_ADMIN: typeof IS_ADMIN != 'undefined' && IS_ADMIN || '',
+                IS_LOGGED_IN: typeof IS_LOGGED_IN != 'undefined' && IS_LOGGED_IN || ''
             }
             initApp(props)
         }

@@ -49,7 +49,18 @@ $DATA = $worker->getData();
 
 
 $vue = './dist/index.php';
-if (file_exists($vue)) {ob_clean();require_once $vue;die;}
+if (file_exists($vue)) {
+	ob_clean();
+	require_once $vue;
+	?>
+		<script>
+			IS_ADMIN=<?=Session::get(Config::USER_COOKIE)?1:0?>
+			IS_LOGGED_IN=<?=Session::get(Config::USER_COOKIE)?1:0?>
+		</script>
+	<?
+	die;
+}
+
 
 $headerView = './app/views/_global/header.php';
 $footerView = './app/views/_global/footer.php';
