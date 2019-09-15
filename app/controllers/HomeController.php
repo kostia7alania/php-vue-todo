@@ -79,6 +79,7 @@ class HomeController extends Controller {
 	 * @return void
 	 */
 	public function e404() {
+		echo 'not fnd.!>';die;
 		http_response_code(404);
 		ob_clean();
 		die('HTTP: 404 not found.');
