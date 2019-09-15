@@ -64,7 +64,7 @@
               <v-btn v-if="!isEditing" text @click="$emit('edit', itemBuffer)" :disabled="!IS_ADMIN">Edit</v-btn>
               <v-btn v-if="!isEditing" text @click="$emit('delete', itemBuffer)" :disabled="!IS_ADMIN" color="purple">Delete</v-btn>
             
-              <v-btn v-if="isEditing" text @click="saveClick" :disabled="!IS_ADMIN && !isSaveBtnActive">Save</v-btn>
+              <v-btn v-if="isEditing" text @click="saveClick" :disabled="!IS_ADMIN || !isSaveBtnActive">Save</v-btn>
               <v-btn v-if="isEditing" text @click="cancelClick">Cancel</v-btn>
               
               <v-spacer></v-spacer>
@@ -85,6 +85,7 @@
 <script>
 import { mapState } from 'vuex';
   export default {
+    name:'task-info',
     props: ['show', 'item', 'isEditing', 'isCreating'],
     data () {
       return {
@@ -133,7 +134,7 @@ import { mapState } from 'vuex';
       isSaveBtnActive() {
         const form =this.itemBuffer
         const pattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        return form.name && pattern.test(form.email) && form.description
+        return !!form.name && pattern.test(form.email) && !!form.description
       }
     },
     methods: {
