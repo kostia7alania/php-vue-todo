@@ -1,4 +1,6 @@
 <?php
+echo 1;die;
+
 header('Access-Control-Allow-Origin: *');
 if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
 	header('Access-Control-Allow-Origin: *');
@@ -15,7 +17,6 @@ error_reporting(0);
 Session::begin();
 
 $request = Http::getRequestedPath();
-echo 1;die;
 $routes = require_once './routes.php';
 
 $args = $foundRoute = null;
