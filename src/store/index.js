@@ -16,7 +16,7 @@ export default new Vuex.Store({
     loading: false,
     snackMsg: false,
    // BACKEND_URL: 'http://localhost:3000/mvc/',
-    BACKEND_URL: 'api/',
+    BACKEND_URL: 'https://todo.kostia7alania.ru/mvc/',
     SHOW_LOGIN_DIALOG: false,
     IS_LOGGED_IN: false,
     IS_ADMIN: false,
