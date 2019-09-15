@@ -101,7 +101,10 @@ export default {
     async login() { 
       this.loading = true
       const res =  await this.DO_LOGIN(this.form) 
-      if(res===true) setTimeout(this.hide, 1000)  
+      if(res===true) {
+        setTimeout(this.hide, 1000)
+        location.reload()
+      }
       this.loading = false
     }, 
   }
