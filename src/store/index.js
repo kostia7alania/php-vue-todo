@@ -17,7 +17,7 @@ export default new Vuex.Store({
         loading: false,
         snackMsg: false,
         // BACKEND_URL: 'http://localhost:3000/mvc/',
-        BACKEND_URL: 'https://todo.kostia7alania.ru/api_mvc/',
+        BACKEND_URL: 'https://todo.kostia7alania.ru/',
         SHOW_LOGIN_DIALOG: false,
         IS_LOGGED_IN: false,
         IS_ADMIN: false,
@@ -57,6 +57,7 @@ export default new Vuex.Store({
         SET_SHOW_LOGIN_DIALOG(state, val) { state.SHOW_LOGIN_DIALOG = val },
         SET_IS_LOGGED_IN(state, LOGGED_IN) { state.IS_LOGGED_IN = LOGGED_IN },
         SET_IS_ADMIN(state, IS_ADMIN) { state.IS_ADMIN = IS_ADMIN },
+        SET_INIT_PARAMS(state, { key, val }) { state[key] = val },
         SET_SEARCH_BY(state, req) {
             state.SEARCH_BY = req
         },

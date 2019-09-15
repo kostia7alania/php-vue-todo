@@ -30,11 +30,17 @@
 
 export default {
   name: 'App',
+  props:['props'],
   components: {
     Todobook:()=>import('./Todobook'),
     'Footer-app':()=>import('./Footer'),
     Snack:()=>import('./components/Snack'),
     Login:()=>import('./components/Login'),
+  },
+  mounted(){
+    debugger
+    const p = this.props
+    Object.keys(p).forEach(key=>this.$store.commit('SET_INIT_PARAMS', {key, val: p[key]}))
   },
   data () {
     return {}
