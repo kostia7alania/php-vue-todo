@@ -114,6 +114,7 @@ import { mapState, mapActions } from 'vuex'
       async deleteItem(item) {
         const res = await this.DELETE_ITEM(item.id)
         this.isEditing = false
+        this.isShownTaskInfo = false
       },
       async saveItem(newItem) {
         const res = await this.UPDATE_ITEM(newItem)
