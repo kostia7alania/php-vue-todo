@@ -15,6 +15,7 @@ error_reporting(0);
 Session::begin();
 
 $request = Http::getRequestedPath();
+echo 1;die;
 $routes = require_once './routes.php';
 
 $args = $foundRoute = null;
