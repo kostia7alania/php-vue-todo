@@ -1,1 +1,4 @@
-AddHandler application/x-httpd-php-7.1 .php
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule . index.php [L]
