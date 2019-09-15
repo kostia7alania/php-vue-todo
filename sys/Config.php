@@ -10,12 +10,12 @@ final class Config {
 	 * @var string
 	 */
 	//const BASE = 'http://localhost:3000/mvc/';
-	const BASE = 'https://todo.kostia7alania.ru/mvc/'; 
+	const BASE = 'https://todo.kostia7alania.ru/'; 
 
 	/**
 	 * Релативни линк апликације (на продукцији најчешће само '/')
 	 */
-	const PATH = '/mvc/';
+	const PATH = '/';// '/mvc/'
 
 	/**
 	 * Сервер БП: име хоста
