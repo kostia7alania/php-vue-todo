@@ -49,7 +49,11 @@ export default window.store = new Vuex.Store({
                 return 0;
             }
 
-            return items.sort(compare);
+          items.map(e=> {
+            e.is_completed = !e.is_completed || e.is_completed=='null' || e.is_completed == '0' ? false : true
+            return e 
+          })
+          return items.sort(compare);
         },
         SNACK_MSG(state) {
             return state.snackMsg

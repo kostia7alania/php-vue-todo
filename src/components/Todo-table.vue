@@ -29,8 +29,8 @@
 
     <template v-slot:item.is_completed="{ item }"> 
       <v-checkbox :disabled="!IS_ADMIN || IS_LOADING"
-                :value="!!item.is_completed"
-                v-model="!!item.is_completed"
+                :value="item.is_completed"
+                v-model="item.is_completed"
                 @click.stop.prevent="changeHandler(item)"
                 :label="`${item.is_completed && item.is_completed.toString() && 'Завершено' || 'Не завершено'}`"
               ></v-checkbox>
@@ -106,7 +106,7 @@ import { mapState, mapActions } from 'vuex'
         console.log('new', item.is_completed)
         this.change(item)
       },
-      async change(item){
+      async change(item) {
         console.log('change=>',item)
         const res = await this.UPDATE_ITEM(item) 
         this.$forceUpdate()
