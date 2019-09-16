@@ -47,12 +47,7 @@ export default window.store = new Vuex.Store({
                     if (a[key] > b[key]) return 1;
                 }
                 return 0;
-            }
-
-          items = items.map(e=> {
-            e.is_completed = !e.is_completed || e.is_completed=='null' || e.is_completed == '0' ? false : true
-            return e 
-          })
+            } 
           return items.sort(compare);
         },
         SNACK_MSG(state) {

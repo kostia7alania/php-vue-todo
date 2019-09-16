@@ -19,7 +19,7 @@
     <v-data-table
       dense
       :headers="headers"
-      :items="ITEMS"
+      :items="itemsComputed"
       :items-per-page="5"
       :search="search"
       :loading="IS_LOADING"
@@ -84,8 +84,14 @@ import { mapState, mapActions } from 'vuex'
         search: '', 
       }
     },
-    computed: {
-      ...mapState(['IS_LOADING','IS_ADMIN','ITEMS']),
+    computed: { 
+      ...mapState(['IS_LOADING','IS_ADMIN', 'ITEMS']),
+      itemsComputed() {
+          return this.ITEMS.map(e=> {
+            e.is_completed = !e.is_completed || e.is_completed=='null' || e.is_completed == '0' ? false : true
+            return e 
+          })
+      },
        headers() {
          const headers = [
           { text: 'Имя', value: 'name', align: 'left',  },
