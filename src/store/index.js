@@ -49,7 +49,7 @@ export default window.store = new Vuex.Store({
                 return 0;
             }
 
-          items.map(e=> {
+          items = items.map(e=> {
             e.is_completed = !e.is_completed || e.is_completed=='null' || e.is_completed == '0' ? false : true
             return e 
           })

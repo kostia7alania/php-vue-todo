@@ -50,7 +50,7 @@ class TaskController extends AuthController {
 			'name' => $name,
 			'email' => $email,
 			'description' => $description,
-			'is_completed'=> 0
+			'is_completed'=> '0'
 		]);
 		if (!$task) {
 			exit(http_response_code(403));
@@ -97,7 +97,7 @@ class TaskController extends AuthController {
 			'name' => $name,
 			'email' => $email,
 			'description' => $description,
-			'is_completed'=> $is_completed
+			'is_completed'=> $is_completed?'1':'0'
 		]);
 
 		if (!$status) {
