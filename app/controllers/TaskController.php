@@ -50,7 +50,7 @@ class TaskController extends AuthController {
 			'name' => $name,
 			'email' => $email,
 			'description' => $description,
-			'is_completed'=> '0'
+			'is_completed'=> ''
 		];
 		$task = TaskModel::create($arr);
 		if (!$task) {
@@ -99,15 +99,15 @@ class TaskController extends AuthController {
 			'name' => $name,
 			'email' => $email,
 			'description' => $description,
-			'is_completed'=> $is_completed?'1':'0'
+			'is_completed'=> $is_completed?'1':''
 		];
 		$status = TaskModel::update($id, $arr);
 
 		if (!$status) {
-			var_dump($arr);
 			exit(http_response_code(403));
 			// return $this->set('message', 'Error #2!');$this->setTask($id);
 		}
+		var_dump($arr);
 		exit(http_response_code(201));
 		// Redirect::to('tasks');
 	}

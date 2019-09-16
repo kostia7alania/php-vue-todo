@@ -138,10 +138,7 @@ abstract class Model {
 		$sql = "UPDATE $tableName SET $fields WHERE `id` = ?;";
 		$pst = Database::getInstance()->prepare($sql);
 
-		if (!$pst) {
-			return false;
-		}
-
+		if (!$pst) return false;
 		return $pst->execute($values);
 	}
 
