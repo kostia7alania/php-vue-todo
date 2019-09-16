@@ -45,17 +45,20 @@ class TaskController extends AuthController {
 		$description = trim($description);
 
 		// запись в БД
-		$task = TaskModel::create([
+		$arr = [
 			//'user_id' => $userId,
 			'name' => $name,
 			'email' => $email,
 			'description' => $description,
 			'is_completed'=> '0'
-		]);
+		];
+		$task = TaskModel::create($arr);
 		if (!$task) {
 			exit(http_response_code(403));
 			//return $this->set('message', 'Error #2!');
 		}
+
+		var_dump($arr);
 		exit(http_response_code(201));
 		//Redirect::to('tasks');
 	}
@@ -91,16 +94,17 @@ class TaskController extends AuthController {
 		$name = trim($name);
 		$email = trim($email);
 		$description = trim($description);
-
-		$status = TaskModel::update($id, [
+		$arr = [
 			//'user_id' => $userId,
 			'name' => $name,
 			'email' => $email,
 			'description' => $description,
 			'is_completed'=> $is_completed?'1':'0'
-		]);
+		];
+		$status = TaskModel::update($id, $arr);
 
 		if (!$status) {
+			var_dump($arr);
 			exit(http_response_code(403));
 			// return $this->set('message', 'Error #2!');$this->setTask($id);
 		}
