@@ -32,6 +32,7 @@ class TaskController extends AuthController {
 		$name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING);
 		$email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
 		$description = filter_input(INPUT_POST, 'description', FILTER_SANITIZE_STRING);
+		$is_completed = filter_input(INPUT_POST, 'is_completed', FILTER_VALIDATE_BOOLEAN);
 		
 		if (empty($name) || empty($email) || empty($description)) {
 			exit(http_response_code(400));
@@ -50,7 +51,7 @@ class TaskController extends AuthController {
 			'name' => $name,
 			'email' => $email,
 			'description' => $description,
-			'is_completed'=> ''
+			'is_completed'=> $is_completed?'1':''
 		];
 		$task = TaskModel::create($arr);
 		if (!$task) {
