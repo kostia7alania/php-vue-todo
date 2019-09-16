@@ -30,7 +30,7 @@ class TaskController extends AuthController {
 		$this->set('title', 'Add task');
 		if (!Http::isPost()) return;
 		$name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING);
-		$email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_STRING);
+		$email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
 		$description = filter_input(INPUT_POST, 'description', FILTER_SANITIZE_STRING);
 		
 		if (empty($name) || empty($email) || empty($description)) {
@@ -76,10 +76,10 @@ class TaskController extends AuthController {
 		if (!Http::isPost()) {
 			return $this->setTask($id);
 		}
-
+ 
 		$id = filter_input(INPUT_POST, 'id', FILTER_SANITIZE_NUMBER_INT);
 		$name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING);
-		$email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_STRING);
+		$email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
 		$description = filter_input(INPUT_POST, 'description', FILTER_SANITIZE_STRING);
 		$is_completed = filter_input(INPUT_POST, 'is_completed', FILTER_VALIDATE_BOOLEAN);
 

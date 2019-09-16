@@ -121,6 +121,7 @@ abstract class Model {
 
 		if (!is_array($data) || empty($data)) {
 			ob_clean();
+			http_response_code(400);
 			die('MODEL: Bad input for update.');
 		}
 

@@ -29,9 +29,9 @@
 
     <template v-slot:item.is_completed="{ item }"> 
       <v-checkbox :disabled="!IS_ADMIN || IS_LOADING"
-                @change="changeHandler($event,item, item.is_completed)"
                 :value="item.is_completed"
-                v-model="item.is_completed"
+                @click="changeHandler(item)"
+                v-model.sync="item.is_completed"
                 :label="`${item.is_completed && item.is_completed.toString() && 'Завершено' || 'Не завершено'}`"
               ></v-checkbox>
     </template>
@@ -100,12 +100,17 @@ import { mapState, mapActions } from 'vuex'
     },
     methods: {
       ...mapActions(['UPDATE_ITEM', 'DELETE_ITEM']),
-      async changeHandler(val, item, cur) {
-        console.log(val, item.is_completed, cur)
+      changeHandler(item) {
+        console.log('old',item.is_completed)
         item.is_completed = !item.is_completed;
-        console.log('val', val)
-        const res = await this.UPDATE_ITEM(item)
+        console.log('new', item.is_completed)
+        this.change(item)
+      },
+      async change(item){
+        console.log('change=>',item)
+        const res  = await this.UPDATE_ITEM(item) 
         if(res===false) item.is_completed = !item.is_completed
+
       },
       editItem (item) {
         this.item = item
