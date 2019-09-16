@@ -9,8 +9,8 @@ const getExios = async() => "axios" in window || (await
 getExios()
 const errHandler = err => {
     const msg = err.response && err.response.status === 401 ? err.response.data || 'Необходимо быть администратором для этого действия' : err.message
-    store.commit('SET_SNACK_MSG', msg)
-    return false
+    store.commit('SET_SNACK_MSG', msg) 
+    return true
 }
 import createPersistedState from 'vuex-persistedstate'
 export default window.store = new Vuex.Store({
@@ -86,17 +86,21 @@ export default window.store = new Vuex.Store({
                 .post(state.BACKEND_URL + 'tasks/create', fd)
                 .then(res => dispatch('GET_ITEMS'))
                 .catch(errHandler)
-                .finally(e => {commit('SET_IS_LOADING_OFF'); return e})
+                .finally(e => {commit('SET_IS_LOADING_OFF'); return true})
         },
+
         async UPDATE_ITEM({ state, commit, dispatch }, item) {
             const fd = new FormData();
             Object.keys(item).forEach(key => fd.append(key, item[key]))
             commit('SET_IS_LOADING_ON')
-            return axios
+            return await axios
                 .post(state.BACKEND_URL + 'tasks/update/' + item.id, fd)
-                .then(res => dispatch('GET_ITEMS'))
+                .then(res => {
+                  dispatch('GET_ITEMS')
+                  return 1 
+                  })
                 .catch(errHandler)
-                .finally(e => {commit('SET_IS_LOADING_OFF'); return e})
+                .finally(e => {debugger;commit('SET_IS_LOADING_OFF'); return 2})
         },
 
         async DELETE_ITEM({ state, commit, dispatch }, id) {
