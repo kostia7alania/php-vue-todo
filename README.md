@@ -1,5 +1,7 @@
 # vue-php-todo
 
+<img src=php-vue-todo-preview.gif />
+
 ## Project setup
 ```
 yarn install
