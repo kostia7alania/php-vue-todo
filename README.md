@@ -1,6 +1,9 @@
 # vue-php-todo
-
-<img src=php-vue-todo-preview.gif />
+<div align="center" >
+<a target="_blank" align="center" href="https://youtu.be/E0MxpS6y-AM">
+  <img align="center" src=php-vue-todo-preview.gif />
+</a>
+  </div>
 
 ## Project setup
 ```
